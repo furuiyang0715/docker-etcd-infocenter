@@ -67,17 +67,86 @@ for j in range(num):
         r3.setdefault(atr, "")
 t4 = time.time()
 
-print(r1)
-print(r1 == r2)
-print(r2 == r3)
+# print(t2-t1)
+# print(t3-t2)
+# print(t4-t3)
+
+r = {
+            "start_date",
+            "end_date",
+            "stock_starting_cash",
+            "frequency",
+            "benchmark",
+            "user_id",
+            "user_account",
+            "strategy_id",
+            "strategy_name",
+            "code_type",
+            "task_id",
+        }
+
+s = {
+            "start_date",
+            "end_date",
+            "stock_starting_cash",
+            "frequency",
+            "benchmark",
+            "user_id",
+            "user_account",
+            "strategy_id",
+            "strategy_name",
+            "code_type",
+            "task_id"
+}
+
+b = {
+            "start_date",
+            "end_date",
+            "stock_starting_cash",
+            "frequency",
+            "benchmark",
+            "user_id",
+            "user_account",
+            "strategy_id",
+            "strategy_name",
+            "code_type",
+            "log_level",
+            "task_id",
+}
+# common = r&s&b
+# {'frequency', 'user_id', 'end_date', 'user_account', 'stock_starting_cash',
+# 'strategy_id', 'task_id', 'code_type', 'start_date', 'strategy_name', 'benchmark'}
 
 
-print(t2-t1)
-print()
-print()
-print(t3-t2)
-print()
-print()
-print(t4-t3)
+# print(r-common)
+# print()
+# print(s-common)
+# print()
+# print(b-common)
+# print()
+
+
+# if self.type == "向导式":
+#     guide = self.guide
+#     stock_pool = guide.pop('stock', {})
+#     hedge = guide.pop('hedge', {})
+#     mod_config.update({
+#         "guide_buy_sell__kwarg": json.dumps(guide),
+#         "guide_stockpool__kwarg": json.dumps(stock_pool)
+#     })
+#     configs.update({"source_code": self.source_code})
+# elif self.type == "编码式":
+#     # 如果为编码式 就将向导式增加的参数 pop 出去
+#     mod_config.pop("guide_buy_sell__kwarg")
+#     mod_config.pop("guide_stockpool__kwarg")
+#     mod_config.pop("guide_buy_sell__enabled")
+#     mod_config.pop("guide_stockpool__enabled")
+#
+#     mod_config.pop("realtime__fps")
+
+
+
+
+
 
 

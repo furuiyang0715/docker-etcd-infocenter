@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="250def08-90cc-4a8d-9539-851ce3e7fcb9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/linshi.py" beforeDir="false" afterPath="$PROJECT_DIR$/linshi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/register_task_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/register_task_id.py" afterDir="false" />
     </list>
@@ -13,14 +12,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.33635813">
+    <splitter split-orientation="horizontal" split-proportion="0.47126436">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/register_task_id.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1098">
-                  <caret line="518" column="24" selection-start-line="518" selection-start-column="24" selection-end-line="518" selection-end-column="24" />
+                <state relative-caret-position="190">
+                  <caret line="550" lean-forward="true" selection-start-line="550" selection-end-line="550" />
                   <folding>
                     <element signature="e#0#11#0" expanded="true" />
                   </folding>
@@ -36,7 +35,7 @@
             <entry file="file://$PROJECT_DIR$/register_task_id.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="5395">
-                  <caret line="653" selection-start-line="653" selection-end-line="653" />
+                  <caret line="563" selection-start-line="563" selection-end-line="563" />
                   <folding>
                     <element signature="e#0#11#0" expanded="true" />
                   </folding>
@@ -47,11 +46,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/linshi.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="161">
-                  <caret line="44" column="14" selection-start-line="44" selection-start-column="14" selection-end-line="44" selection-end-column="14" />
-                  <folding>
-                    <element signature="e#932#943#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="164">
+                  <caret line="127" selection-start-line="127" selection-end-line="127" />
                 </state>
               </provider>
             </entry>
@@ -84,13 +80,14 @@
         <option value="$PROJECT_DIR$/test2.py" />
         <option value="$PROJECT_DIR$/tt_use.py" />
         <option value="$PROJECT_DIR$/run_docker_service.py" />
-        <option value="$PROJECT_DIR$/register_task_id.py" />
         <option value="$PROJECT_DIR$/linshi.py" />
+        <option value="$PROJECT_DIR$/register_task_id.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1677" />
+    <option name="x" value="-1663" />
+    <option name="y" value="103" />
     <option name="width" value="1879" />
     <option name="height" value="972" />
   </component>
@@ -150,16 +147,15 @@
       <updated>1554881337031</updated>
       <workItem from="1554881338481" duration="447000" />
       <workItem from="1554968839419" duration="83590000" />
-      <workItem from="1555742843152" duration="4855000" />
+      <workItem from="1555742843152" duration="7408000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88892000" />
+    <option name="totallyTimeSpent" value="91445000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1677" y="0" width="1879" height="972" extended-state="0" />
-    <editor active="true" />
+    <frame x="-1663" y="103" width="1879" height="972" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10016331" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -175,7 +171,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.31363636" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.40681818" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -301,22 +297,26 @@
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/register_task_id.py">
+    <entry file="file://$PROJECT_DIR$/../../../zmyself/baocun.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5395">
-          <caret line="653" selection-start-line="653" selection-end-line="653" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="139">
+          <caret line="23" column="36" lean-forward="true" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/linshi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="44" column="14" selection-start-line="44" selection-start-column="14" selection-end-line="44" selection-end-column="14" />
+        <state relative-caret-position="164">
+          <caret line="127" selection-start-line="127" selection-end-line="127" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/register_task_id.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="550" lean-forward="true" selection-start-line="550" selection-end-line="550" />
           <folding>
-            <element signature="e#932#943#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>

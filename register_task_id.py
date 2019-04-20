@@ -348,6 +348,21 @@ def handle_bar(context, bar_dict):
 
 
 class BaseConfigMixin(EtcdConfigMixin):
+    # 对于实盘 模拟盘和回测均需要动态更入的属性
+    atrs = {
+        'frequency',
+        'user_id',
+        'end_date',
+        'user_account',
+        'stock_starting_cash',
+        'strategy_id',
+        'task_id',
+        'code_type',
+        'start_date',
+        'strategy_name',
+        'benchmark'
+    }
+
     def _base_update(self):
         """用于脚本更新"""
         self.set_realtrade_environment()
@@ -358,7 +373,7 @@ class BaseConfigMixin(EtcdConfigMixin):
         self.set_simulation_args()
         self.set_backtest_args()
 
-    def index_commond(self, configs):
+    def _index_commond(self, configs):
         """与 index 相关的命令"""
         uris = configs.get("index_server_uris").split(",")
         server_list = []
@@ -379,43 +394,8 @@ class BaseConfigMixin(EtcdConfigMixin):
         })
         return configs
 
-    def realtrade_commond(self):
-        configs = self.realtrade_args
-
-        mod_config = configs.get("mod_config", {})
-
-        # 实盘的动态 atr
-        atr = {
-            "start_date",
-            "end_date",
-            "stock_starting_cash",
-            "frequency",
-            "benchmark",
-            "user_id",
-            "user_account",
-            "strategy_id",
-            "strategy_name",
-            "code_type",
-            "task_id",
-        }
-
-        configs.update({
-            "start_date": self.start_date,
-            "end_date": self.end_date,
-            "stock_starting_cash": str(self.stock_starting_cash),
-            "frequency": self.frequency,
-            "benchmark": self.benchmark,
-            "user_id": self.user_id,
-            "user_account": self.user_account,
-            "strategy_id": self.id,
-            "strategy_name": self.name,
-            "code_type": self.type,
-            "task_id": self.id,
-
-        })
-
-        configs = self.index_commond(configs)
-
+    def _type_commond(self, configs, mod_config):
+        """根据向导式还是编码式的类型来生成命令"""
         if self.type == "向导式":
             guide = self.guide
             stock_pool = guide.pop('stock', {})
@@ -426,14 +406,25 @@ class BaseConfigMixin(EtcdConfigMixin):
             })
             configs.update({"source_code": self.source_code})
         elif self.type == "编码式":
-            # 如果为编码式 就将向导式增加的参数 pop 出去
             mod_config.pop("guide_buy_sell__kwarg")
             mod_config.pop("guide_stockpool__kwarg")
             mod_config.pop("guide_buy_sell__enabled")
             mod_config.pop("guide_stockpool__enabled")
+            # 对于回测 无 "realtime__fps" atr 为了不报错 加上 None
+            mod_config.pop("realtime__fps", None)
+        return configs, mod_config
 
-            mod_config.pop("realtime__fps")
+    def realtrade_commond(self):
+        configs = self.realtrade_args
+        mod_config = configs.get("mod_config", {})
 
+        # 实盘的动态 atr
+        atrs = self.atrs
+        for atr in atrs:
+            configs.update({atr: str(getattr(self, atr))})
+
+        configs = self._index_commond(configs)
+        configs, mod_config = self._type_commond(configs, mod_config)
         configs.update({"mod_config": mod_config})
         return self.commond(configs)
 
@@ -442,136 +433,54 @@ class BaseConfigMixin(EtcdConfigMixin):
 
         mod_config = configs.get("mod_config", {})
 
-        atr = {
-            "start_date",
-            "end_date",
-            "stock_starting_cash",
-            "frequency",
-            "benchmark",
-            "user_id",
-            "user_account",
-            "strategy_id",
-            "strategy_name",
-            "code_type",
-            "task_id"
-        }
+        atrs = self.atrs
+        for atr in atrs:
+            configs.update({atr: str(getattr(self, atr))})
 
-        configs.update({
-            "start_date": self.start_date,
-            "end_date": self.end_date,
-            "stock_starting_cash": str(self.stock_starting_cash),
-            "frequency": self.frequency,
-            "benchmark": self.benchmark,
-            "user_id": self.user_id,
-            "user_account": self.user_account,
-            "strategy_id": self.id,
-            "strategy_name": self.name,
-            "code_type": self.type,
-
-            "task_id": self.id   #
-
-        })
-
+        # 模拟盘动态更入的 mod atr
         mod_config.update({
             "sys_simulation__matching_type": self.matching_type,
             "sys_simulation__slippage": str(self.slippage),
             "sys_simulation__commission_multiplier": str(self.commission_multiplier),
-            "realtime__simulation_id": str(self.simulation_id),   #
+            "realtime__simulation_id": str(self.simulation_id),
         })
 
-        configs = self.index_commond(configs)
-
-        if self.type == "向导式":
-            guide = self.guide
-            stock_pool = guide.pop('stock', {})
-            hedge = guide.pop('hedge', {})
-            mod_config.update({
-                "guide_buy_sell__kwarg": json.dumps(guide),
-                "guide_stockpool__kwarg": json.dumps(stock_pool)
-            })
-            configs.update({"source_code": self.source_code})
-        elif self.type == "编码式":
-            mod_config.pop("guide_buy_sell__kwarg")
-            mod_config.pop("guide_stockpool__kwarg")
-            mod_config.pop("guide_buy_sell__enabled")
-            mod_config.pop("guide_stockpool__enabled")
-            mod_config.pop("realtime__fps")
+        configs = self._index_commond(configs)
+        configs, mod_config = self._type_commond(configs, mod_config)
 
         configs.update({"mod_config": mod_config})
         return self.commond(configs)
 
     def backtest_commond(self, task_id, debug):
         configs = self.backtest_args
-
         mod_config = configs.get("mod_config", {})
 
-        atr = {
-            "start_date",
-            "end_date",
-            "stock_starting_cash",
-            "frequency",
-            "benchmark",
-            "user_id",
-            "user_account",
-            "strategy_id",
-            "strategy_name",
-            "code_type",
-            "log_level",
-            "task_id",
-        }
+        atrs = self.atrs.union({'log_level'})
+        for atr in atrs:
+            configs.update({atr: str(getattr(self, atr))})
 
-        configs.update({
-            "start_date": self.start_date,
-            "end_date": self.end_date,
-            "stock_starting_cash": str(self.stock_starting_cash),
-            "frequency": self.frequency,
-            "benchmark": self.benchmark,
-            "user_id": self.user_id,
-            "user_account": self.user_account,
-            "strategy_id": self.id,
-            "strategy_name": self.name,
-            "code_type": self.type,
-            "log_level": self.log_level,
-
-            "task_id": task_id,
-
-        })
-
+        # 回测动态更入的 mod atr
         mod_config.update({
             "sys_simulation__matching_type": self.matching_type,
             "sys_simulation__slippage": str(self.slippage),
             "sys_simulation__commission_multiplier": str(self.commission_multiplier),
             "sys_simulation__stock_min_commision": str(self.stock_min_commision)
         })
-
         if debug:
             mod_config.update({'trade_message__debug': 'true'})
+        # 单独判断
+        if self.type == "编码式":
+            configs.update({"source_code": self.strategy_code})
 
-        configs = self.index_commond(configs)
-
-        if self.type == "向导式":
-            guide = self.guide
-            stock_pool = guide.pop('stock', {})
-            hedge = guide.pop('hedge', {})
-            mod_config.update({
-                "guide_buy_sell__kwarg": json.dumps(guide),
-                "guide_stockpool__kwarg": json.dumps(stock_pool)
-            })
-        elif self.type == "编码式":
-            configs.update({
-                "source_code": self.strategy_code,
-            })
-            mod_config.pop("guide_buy_sell__kwarg")
-            mod_config.pop("guide_stockpool__kwarg")
-            mod_config.pop("guide_buy_sell__enabled")
-            mod_config.pop("guide_stockpool__enabled")
+        configs = self._index_commond(configs)
+        configs, mod_config = self._type_commond(configs, mod_config)
 
         configs.update({"mod_config": mod_config})
 
         return self.commond(configs)
 
     def cbacktest_commond(self):
-        #
+        # 这部分暂时没用到
         return []
 
     def commond(self, configs, *args, **kwargs):
@@ -599,6 +508,7 @@ class SpawnerEnvMixin(EtcdConfigMixin):
         }
 
     def _base_update(self):
+        """用于在脚本中调用更新"""
         self.set_backtest_environment()
         self.set_simulation_environment()
         self.set_realtrade_environment()
@@ -625,29 +535,29 @@ if __name__ == "__main__":
     demo = EtcdConfigMixin()
 
     demo.set_realtrade_args()
-    # print(demo.realtrade_args)
+    print(demo.realtrade_args)
 
     demo.set_simulation_args()
-    # print(demo.simulation_args)
+    print(demo.simulation_args)
 
     demo.set_backtest_args()
-    # print(demo.backtest_args)
+    print(demo.backtest_args)
 
     demo.set_backtest_environment()
-    # print(demo.backtest_environment)
+    print(demo.backtest_environment)
 
     demo.set_simulation_environment()
-    # print(demo.simulation_environment)
+    print(demo.simulation_environment)
 
     demo.set_realtrade_environment()
-    # print(demo.realtrade_environment)
+    print(demo.realtrade_environment)
 
     sp = SpawnerEnvMixin()
 
-    # print(sp.spawn_map)
+    print(sp.spawn_map)
 
-    # print(sp.spawn_params(None, None, "backtest"))
+    print(sp.spawn_params(None, None, "backtest"))
 
-    # print(sp.spawn_params(None, None, "simulation"))
+    print(sp.spawn_params(None, None, "simulation"))
 
-    # print(sp.spawn_params(None, None, "realtrade"))
+    print(sp.spawn_params(None, None, "realtrade"))
