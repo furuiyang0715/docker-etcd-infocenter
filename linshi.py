@@ -41,26 +41,35 @@ r_mod_atr = {
         }
 
 config_atr = base_config_atr
+
+
+# 具有给定的键值 给字典赋默认值
 import time
-"""第一种方法："""
+num = 1000000
+
+"""第一种方法："""      # 2.852492094039917
 t1 = time.time()
-r1 = dict(list(zip(config_atr, ["" for i in range(len(config_atr))])))
+for j in range(num):
+    r1 = dict(list(zip(config_atr, ["" for i in range(len(config_atr))])))
 t2 = time.time()
 
-"""第二种方法：遍历赋默认值"""
-r2 = dict()
-for atr in config_atr:
-    r2.update({atr: ''})
+"""第二种方法：遍历赋默认值"""  # 4.651882886886597
+for j in range(num):
+    r2 = dict()
+    for atr in config_atr:
+        r2.update({atr: ''})
 t3 = time.time()
 
-"""第三种：使用具有默认值的字典"""
-r3 = dict()
-for atr in config_atr:
-    r3.setdefault(atr, "")
+"""第三种：使用具有默认值的字典"""  # 2.7060930728912354
+for j in range(num):
+    r3 = dict()
+    for atr in config_atr:
+        r3.setdefault(atr, "")
 t4 = time.time()
 
-print(r1==r2)
-print(r2==r3)
+print(r1)
+print(r1 == r2)
+print(r2 == r3)
 
 
 print(t2-t1)

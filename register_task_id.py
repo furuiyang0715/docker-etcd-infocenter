@@ -349,6 +349,7 @@ def handle_bar(context, bar_dict):
 
 class BaseConfigMixin(EtcdConfigMixin):
     def _base_update(self):
+        """用于脚本更新"""
         self.set_realtrade_environment()
         self.set_simulation_environment()
         self.set_backtest_environment()
@@ -382,6 +383,21 @@ class BaseConfigMixin(EtcdConfigMixin):
         configs = self.realtrade_args
 
         mod_config = configs.get("mod_config", {})
+
+        # 实盘的动态 atr
+        atr = {
+            "start_date",
+            "end_date",
+            "stock_starting_cash",
+            "frequency",
+            "benchmark",
+            "user_id",
+            "user_account",
+            "strategy_id",
+            "strategy_name",
+            "code_type",
+            "task_id",
+        }
 
         configs.update({
             "start_date": self.start_date,
@@ -425,6 +441,20 @@ class BaseConfigMixin(EtcdConfigMixin):
         configs = self.simulation_args
 
         mod_config = configs.get("mod_config", {})
+
+        atr = {
+            "start_date",
+            "end_date",
+            "stock_starting_cash",
+            "frequency",
+            "benchmark",
+            "user_id",
+            "user_account",
+            "strategy_id",
+            "strategy_name",
+            "code_type",
+            "task_id"
+        }
 
         configs.update({
             "start_date": self.start_date,
@@ -474,6 +504,21 @@ class BaseConfigMixin(EtcdConfigMixin):
         configs = self.backtest_args
 
         mod_config = configs.get("mod_config", {})
+
+        atr = {
+            "start_date",
+            "end_date",
+            "stock_starting_cash",
+            "frequency",
+            "benchmark",
+            "user_id",
+            "user_account",
+            "strategy_id",
+            "strategy_name",
+            "code_type",
+            "log_level",
+            "task_id",
+        }
 
         configs.update({
             "start_date": self.start_date,
