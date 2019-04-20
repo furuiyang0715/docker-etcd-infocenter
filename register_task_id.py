@@ -131,16 +131,11 @@ def handle_bar(context, bar_dict):
         }
         mod_atr = self.base_mod_atr.union(r_mod_atr)
 
-        # 配置默认值  TODO ugly
-        realtrade = dict()
-        for atr in config_atr:
-            realtrade.update({atr: ""})
+        # 配置默认值
+        realtrade = dict(list(zip(config_atr, ["" for i in range(len(config_atr))])))
+        mod_config = dict(list(zip(config_atr, ["" for i in range(len(mod_atr))])))
 
-        mod_config = dict()
-        for atr in mod_atr:
-            mod_config.update({atr: ''})
-
-        # 设置实盘mod atr的相对固定配置
+        # 设置实盘mod atr的更入相对固定配置
         mod_config.update({'messaging__enabled': "true"})
         mod_config.update({'guide_buy_sell__enabled': 'true'})
         mod_config.update({'guide_stockpool__enabled': 'true'})
@@ -184,13 +179,8 @@ def handle_bar(context, bar_dict):
         }
         mod_atr = self.base_mod_atr.union(s_mod_atr)
 
-        simulation = dict()
-        for atr in config_atr:
-            simulation.update({atr: ''})
-
-        mod_config = dict()
-        for atr in mod_atr:
-            mod_config.update({atr: ''})
+        simulation = dict(list(zip(config_atr, ["" for i in range(len(config_atr))])))
+        mod_config = dict(list(zip(config_atr, ["" for i in range(len(mod_atr))])))
 
         mod_config.update({'messaging__enabled': "true"})
         mod_config.update({'mongodb__enabled': "true"})
@@ -231,13 +221,8 @@ def handle_bar(context, bar_dict):
         }
         mod_atr = self.base_mod_atr.union(b_mod_atr)
 
-        backtest = dict()
-        for atr in config_atr:
-            backtest.update({atr: ''})
-
-        mod_config = dict()
-        for atr in mod_atr:
-            mod_config.update({atr: ''})
+        backtest = dict(list(zip(config_atr, ["" for i in range(len(config_atr))])))
+        mod_config = dict(list(zip(config_atr, ["" for i in range(len(mod_atr))])))
 
         mod_config.update({'messaging__enabled': "true"})
         mod_config.update({'mongodb__enabled': "true"})
