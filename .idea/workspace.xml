@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="250def08-90cc-4a8d-9539-851ce3e7fcb9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/docker-etcd-registrator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/docker-etcd-registrator.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.py" beforeDir="false" afterPath="$PROJECT_DIR$/register.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test2.py" beforeDir="false" afterPath="$PROJECT_DIR$/test2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test2.py" beforeDir="false" afterPath="$PROJECT_DIR$/try_001.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test3.py" beforeDir="false" afterPath="$PROJECT_DIR$/try_002.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,65 +12,40 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1955">
-              <caret line="846" selection-start-line="846" selection-end-line="846" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test3.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7810">
-              <caret line="524" column="35" selection-start-line="524" selection-start-column="35" selection-end-line="524" selection-end-column="35" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service_atr_test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="68" selection-start-line="68" selection-end-line="68" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/run_docker_service.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/register.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-900">
-              <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Dockerfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.51432294">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/register_task_id.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-29">
+                  <caret line="89" column="8" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
+                  <folding>
+                    <element signature="e#0#11#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/register_task_id.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="6663">
+                  <caret line="638" selection-start-line="638" selection-end-line="638" />
+                  <folding>
+                    <element signature="e#0#11#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -100,12 +71,12 @@
         <option value="$PROJECT_DIR$/test2.py" />
         <option value="$PROJECT_DIR$/tt_use.py" />
         <option value="$PROJECT_DIR$/run_docker_service.py" />
+        <option value="$PROJECT_DIR$/register_task_id.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1412" />
-    <option name="y" value="29" />
+    <option name="x" value="-1723" />
     <option name="width" value="1879" />
     <option name="height" value="972" />
   </component>
@@ -160,17 +131,17 @@
       <updated>1554881337031</updated>
       <workItem from="1554881338481" duration="447000" />
       <workItem from="1554968839419" duration="83590000" />
-      <workItem from="1555742843152" duration="312000" />
+      <workItem from="1555742843152" duration="1360000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84349000" />
+    <option name="totallyTimeSpent" value="85397000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1412" y="29" width="1879" height="972" extended-state="0" />
+    <frame x="-1723" y="0" width="1879" height="972" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1638541" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14534567" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -184,7 +155,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.6318182" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.2625" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -271,16 +242,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test2.py">
+    <entry file="file://$PROJECT_DIR$/register.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1955">
-          <caret line="846" selection-start-line="846" selection-end-line="846" />
+        <state relative-caret-position="1606">
+          <caret line="110" column="19" lean-forward="true" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="19" />
+          <folding>
+            <element signature="e#245#255#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test3.py">
+    <entry file="file://$PROJECT_DIR$/run_docker_service.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7810">
+        <state relative-caret-position="450">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service_atr_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="997">
+          <caret line="68" selection-start-line="68" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/try_002.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7860">
           <caret line="524" column="35" selection-start-line="524" selection-start-column="35" selection-end-line="524" selection-end-column="35" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
@@ -288,24 +276,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service_atr_test.py">
+    <entry file="file://$PROJECT_DIR$/try_001.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
+        <state relative-caret-position="395">
+          <caret line="735" column="17" lean-forward="true" selection-start-line="735" selection-start-column="17" selection-end-line="735" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_docker_service.py">
+    <entry file="file://$PROJECT_DIR$/register_task_id.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/register.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-900">
-          <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+        <state relative-caret-position="-29">
+          <caret line="89" column="8" selection-start-line="89" selection-start-column="8" selection-end-line="89" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
