@@ -73,22 +73,34 @@ def handle_bar(context, bar_dict):
 
     # 不管是实盘,模拟盘还是回测,其共有的config atr
     base_config_atr = {
-        'index_server_uris', 'strategy_id',
-        'run_type', 'code_type',
-        'start_date', 'stock_starting_cash',
-        'index_switch_server', 'log_level',
-        'task_id', 'frequency',
-        'user_id', 'end_date',
-        'benchmark', 'mod_config',
-        'strategy_name', 'user_account'
+        'index_server_uris',
+        'strategy_id',
+        'run_type',
+        'code_type',
+        'start_date',
+        'stock_starting_cash',
+        'index_switch_server',
+        'log_level',
+        'task_id',
+        'frequency',
+        'user_id',
+        'end_date',
+        'benchmark',
+        'mod_config',
+        'strategy_name',
+        'user_account'
     }
 
     # 实盘,模拟盘,回测的共有的mod config atr
     base_mod_atr = {
-        'guide_buy_sell__enabled', 'messaging__rw',
-        'guide_stockpool__enabled', 'mongodb__mongouri',
-        'guide_buy_sell__kwarg', 'messaging__enabled',
-        'guide_stockpool__kwarg', 'mongodb__enabled'
+        'guide_buy_sell__enabled',
+        'guide_stockpool__enabled',
+        'guide_buy_sell__kwarg',
+        'guide_stockpool__kwarg',
+        'mongodb__enabled',
+        'messaging__rw',
+        'mongodb__mongouri',
+        'messaging__enabled',
     }
 
     @property
@@ -109,8 +121,12 @@ def handle_bar(context, bar_dict):
 
         # 实盘需特殊配置的 mod_atr
         r_mod_atr = {
-            'realtime__fps', 'sys_analyser__enabled', 'terminator__enabled',
-            'sys_risk__enabled', 'sys_simulation__enabled', 'realtrade__enabled',
+            'realtime__fps',
+            'sys_analyser__enabled',
+            'terminator__enabled',
+            'sys_risk__enabled',
+            'sys_simulation__enabled',
+            'realtrade__enabled',
             'sys_progress__enabled'
         }
         mod_atr = self.base_mod_atr.union(r_mod_atr)
@@ -158,9 +174,12 @@ def handle_bar(context, bar_dict):
 
         # 针对模拟盘,需要特殊配置的mod_atr
         s_mod_atr = {
-            'sys_simulation__slippage', 'realtime__enabled',
-            'sys_simulation__commission_multiplier', 'realtime__simulation_id',
-            'sys_simulation__matching_type', 'realtime__fps',
+            'sys_simulation__slippage',
+            'realtime__enabled',
+            'sys_simulation__commission_multiplier',
+            'realtime__simulation_id',
+            'sys_simulation__matching_type',
+            'realtime__fps',
             'exception__enabled'
         }
         mod_atr = self.base_mod_atr.union(s_mod_atr)
@@ -200,12 +219,15 @@ def handle_bar(context, bar_dict):
 
         # 针对回测，其需要特殊配置的mod atr
         b_mod_atr = {
-            'trade_message__enabled', 'sys_simulation__slippage',
+            'trade_message__enabled',
+            'sys_simulation__slippage',
             'sys_simulation__commission_multiplier',
-            'sys_simulation__matching_type', 'storeDB__enabled',
+            'sys_simulation__matching_type',
+            'storeDB__enabled',
             # 'trade_message__debug',
             'storeDB__host',
-            'sys_simulation__stock_min_commision', 'exception__enabled'
+            'sys_simulation__stock_min_commision',
+            'exception__enabled'
         }
         mod_atr = self.base_mod_atr.union(b_mod_atr)
 
