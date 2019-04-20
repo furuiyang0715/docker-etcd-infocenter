@@ -231,7 +231,7 @@ def handle_bar(context, bar_dict):
         mod_config.update({'guide_buy_sell__enabled': 'true'})
         mod_config.update({'guide_stockpool__enabled': 'true'})
         mod_config.update({'trade_message__enabled': 'true'})
-        # mod_config.update({'trade_message__debug': 'true'})   # 根据 debug 判断
+
         mod_config.update({'storeDB__enabled': 'true'})
         mod_config.update({'storeDB__host': self.STRATEGY_MONGO})
         mod_config.update({'messaging__rw': "1"})
@@ -357,6 +357,27 @@ class BaseConfigMixin(EtcdConfigMixin):
         self.set_simulation_args()
         self.set_backtest_args()
 
+    def index_commond(self, configs):
+        """与 index 相关的命令"""
+        uris = configs.get("index_server_uris").split(",")
+        server_list = []
+        for group in uris:
+            server = group.split(":")
+            server_list.append((server[0].strip(), server[1].strip()))
+        if configs.get("index_switch_server"):
+            seed = int(time.time())
+            selected = server_list[seed % len(server_list)]
+        else:
+            selected = server_list[0]
+        configs.pop("index_server_uris")
+        configs.pop("index_switch_server")
+
+        configs.update({
+            "index_server": selected[0],
+            "index_port": str(selected[1])
+        })
+        return configs
+
     def realtrade_commond(self):
         configs = self.realtrade_args
 
@@ -377,26 +398,7 @@ class BaseConfigMixin(EtcdConfigMixin):
 
         })
 
-        # （TODO）共同部分是否可封装
-        uris = configs.get("index_server_uris").split(",")
-        server_list = []
-        for group in uris:
-            server = group.split(":")
-            server_list.append((server[0].strip(), server[1].strip()))
-        if configs.get("index_switch_server"):
-            seed = int(time.time())
-            selected = server_list[seed % len(server_list)]
-        else:
-            selected = server_list[0]
-        configs.pop("index_server_uris")
-        configs.pop("index_switch_server")
-
-        configs.update({
-            "index_server": selected[0],
-            "index_port": str(selected[1])
-        })
-
-        # mod_config.pop('exception__enabled')
+        configs = self.index_commond(configs)
 
         if self.type == "向导式":
             guide = self.guide
@@ -447,23 +449,7 @@ class BaseConfigMixin(EtcdConfigMixin):
             "realtime__simulation_id": str(self.simulation_id),   #
         })
 
-        uris = configs.get("index_server_uris").split(",")
-        server_list = []
-        for group in uris:
-            server = group.split(":")
-            server_list.append((server[0].strip(), server[1].strip()))
-        if configs.get("index_switch_server"):
-            seed = int(time.time())
-            selected = server_list[seed % len(server_list)]
-        else:
-            selected = server_list[0]
-        configs.pop("index_server_uris")
-        configs.pop("index_switch_server")
-
-        configs.update({
-            "index_server": selected[0],
-            "index_port": str(selected[1])
-        })
+        configs = self.index_commond(configs)
 
         if self.type == "向导式":
             guide = self.guide
@@ -516,23 +502,7 @@ class BaseConfigMixin(EtcdConfigMixin):
         if debug:
             mod_config.update({'trade_message__debug': 'true'})
 
-        uris = configs.get("index_server_uris").split(",")
-        server_list = []
-        for group in uris:
-            server = group.split(":")
-            server_list.append((server[0].strip(), server[1].strip()))
-        if configs.get("index_switch_server"):
-            seed = int(time.time())
-            selected = server_list[seed % len(server_list)]
-        else:
-            selected = server_list[0]
-        configs.pop("index_server_uris")
-        configs.pop("index_switch_server")
-
-        configs.update({
-            "index_server": selected[0],
-            "index_port": str(selected[1])
-        })
+        configs = self.index_commond(configs)
 
         if self.type == "向导式":
             guide = self.guide

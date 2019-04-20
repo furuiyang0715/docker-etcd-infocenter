@@ -55,9 +55,12 @@ t3 = time.time()
 
 """第三种：使用具有默认值的字典"""
 r3 = dict()
-for k, v in dict():
-    r3.setdefault(k, "").add(v)
+for atr in config_atr:
+    r3.setdefault(atr, "")
 t4 = time.time()
+
+print(r1==r2)
+print(r2==r3)
 
 
 print(t2-t1)
@@ -67,10 +70,5 @@ print(t3-t2)
 print()
 print()
 print(t4-t3)
-
-# stu = [('wang', 1), ('zhang', 4), ('fu', 2), ('li', 3), ('fu', 7), ('wang', 2), ('wang', 8)]
-# stu_set = {}
-# for k, v in stu:
-#     stu_set.setdefault(k, set()).add(v)
 
 
